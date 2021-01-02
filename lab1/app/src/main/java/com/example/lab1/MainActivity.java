@@ -1,50 +1,24 @@
 package com.example.lab1;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.EditText;
-import android.widget.Spinner;
 
 
+import androidx.appcompat.app.AppCompatActivity;
+
+import androidx.lifecycle.ViewModelProviders;
 
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+import android.widget.TextView;
 
+public class MainActivity extends AppCompatActivity {
 
+    private MainViewModel mainViewModel;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mainViewModel = ViewModelProviders.of(this).get(MainViewModel.class);
         setContentView(R.layout.activity_main);
+        TextView v = findViewById(R.id.versionName);
+        v.setText(BuildConfig.VERSION_NAME);
     }
-
-    @Override
-    public void onClick(View view) {
-        Intent intent = new Intent(MainActivity.this, ConvertActivity.class);
-        switch(view.getId())
-        {
-            case R.id.distance_button:
-                intent.putExtra("token", "distance");
-                startActivity(intent);
-                break;
-
-            case  R.id.currency_button:
-                intent.putExtra("token", "currency");
-                startActivity(intent);
-                break;
-
-            case R.id.weight_button:
-                intent.putExtra("token", "weight");
-                startActivity(intent);
-                break;
-        }
-    }
-
 }

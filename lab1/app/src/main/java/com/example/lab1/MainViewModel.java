@@ -1,164 +1,109 @@
 package com.example.lab1;
 
+import androidx.annotation.NonNull;
+import androidx.lifecycle.AndroidViewModel;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
 import android.app.Application;
 import android.content.ClipData;
 import android.content.ClipboardManager;
-import android.os.Build;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
-import androidx.lifecycle.AndroidViewModel;
-import androidx.lifecycle.MutableLiveData;
 
-import java.util.Objects;
 
-public class MainViewModel extends AndroidViewModel
-{
-    private final MutableLiveData<String> spinnerInputLiveData = new MutableLiveData<>("");
-    private final MutableLiveData<String> spinnerOutputLiveData = new MutableLiveData<>("");
-    private final MutableLiveData<String> inputEditLiveData = new MutableLiveData<>("");
-    private final MutableLiveData<String> outputEditLiveData = new MutableLiveData<>("");
-
+public class MainViewModel extends AndroidViewModel {
+    private MutableLiveData<String> first_field_data;
+    private MutableLiveData<String> second_field_data;
+    private MutableLiveData<Item> first_field_spinner;
+    private MutableLiveData<Item> second_filed_spinner;
 
     public MainViewModel(@NonNull Application application) {
         super(application);
     }
 
-    public void setSpinnerInputLiveData(String item)
-    {
-        spinnerInputLiveData.setValue(item);
+    public LiveData<String> getSecond_field_data(){
+        if(second_field_data == null){
+            second_field_data = new MutableLiveData<String>();
+            second_field_data.setValue("");
+        }
+        return second_field_data;
     }
 
-    public void setSpinnerOutputLiveData(String item)
-    {
-        spinnerOutputLiveData.setValue(item);
+    public MutableLiveData<Item> getInputSpinner(){
+        if(first_field_spinner == null){
+            first_field_spinner = new MutableLiveData<Item>();
+            first_field_spinner.setValue(Item.METERS);
+        }
+        return first_field_spinner;
+    }
+
+    public void setSecond_field_data(String str){
+        if(second_field_data == null){
+            second_field_data = new MutableLiveData<String>();
+        }
+        second_field_data.setValue(str);
+    }
+
+    public void setFirst_field_data(String str){
+        if(first_field_data == null){
+            first_field_data = new MutableLiveData<String>();
+        }
+        first_field_data.setValue(str);
+    }
+
+    public MutableLiveData<String> getFirst_field_data(){
+        if(first_field_data == null){
+            first_field_data = new MutableLiveData<String>();
+            first_field_data.setValue("");
+        }
+        return first_field_data;
+    }
+
+    public MutableLiveData<Item> getSecond_filed_spinner(){
+        if(second_filed_spinner == null){
+            second_filed_spinner = new MutableLiveData<Item>();
+            second_filed_spinner.setValue(Item.METERS);
+        }
+        return second_filed_spinner;
+    }
+
+    public MutableLiveData<Item> getFirst_field_spinner(){
+        if(first_field_spinner == null){
+            first_field_spinner = new MutableLiveData<Item>();
+            first_field_spinner.setValue(Item.METERS);
+        }
+        return first_field_spinner;
+    }
+
+
+    public String convert(String data){
+        String str = Translator.convert(data, getFirst_field_spinner().getValue(), getSecond_filed_spinner().getValue());
+        setSecond_field_data(str);
+        return second_field_data.getValue();
+    }
+
+
+    public void PasteToBuffer(CopyOrder type, ClipboardManager clipManager){
+        ClipData clipboard;
+        if(type == CopyOrder.INPUT){
+            clipboard = ClipData.newPlainText("text", getFirst_field_data().getValue());
+        }
+        else{
+            clipboard = ClipData.newPlainText("text", getSecond_field_data().getValue());
+        }
+        clipManager.setPrimaryClip(clipboard);
+        Toast toast = Toast.makeText(getApplication(), clipboard.toString(), Toast.LENGTH_SHORT);
+        toast.show();
     }
 
     public void ReplaceValues()
     {
-        String temp = inputEditLiveData.getValue();
-        inputEditLiveData.setValue(outputEditLiveData.getValue());
-        outputEditLiveData.setValue(temp);
-        temp = spinnerInputLiveData.getValue();
-        spinnerInputLiveData.setValue(spinnerOutputLiveData.getValue());
-        spinnerOutputLiveData.setValue(temp);
-    }
-
-    public void addValue(String str)
-    {
-        inputEditLiveData.setValue(inputEditLiveData.getValue() + str);
-    }
-
-
-    public void addPoint()
-    {
-        if(Objects.requireNonNull(inputEditLiveData.getValue()).length() > 0 && inputEditLiveData.getValue().indexOf(".") < 1)
-        {
-            inputEditLiveData.setValue(inputEditLiveData.getValue() + ".");
-        }
-    }
-
-    public void ClearData()
-    {
-        inputEditLiveData.setValue("");
-    }
-
-    public MutableLiveData<String> getInputEditLiveData() {
-        return inputEditLiveData;
-    }
-
-    public MutableLiveData<String> getOutputEditLiveData() {
-        return outputEditLiveData;
-    }
-
-
-    public void convert()
-    {
-        double firstkoeff = 1.0;
-        double secondkoeff = 1.0;
-
-        switch (Objects.requireNonNull(spinnerInputLiveData.getValue()))
-        {
-            case "Meters":
-            case "Grams":
-            case "Rubles":
-                firstkoeff = 1.0;
-                break;
-            case "Kilometers":
-            case "Kilograms":
-                firstkoeff = 1000.0;
-                break;
-            case "Miles":
-                firstkoeff = 1609.64;
-                break;
-            case "Pounds":
-                firstkoeff = 453.592;
-                break;
-            case "Dollars" :
-                firstkoeff = 2.62;
-                break;
-            case "Euro":
-                firstkoeff = 3.09;
-                break;
-            default:
-                firstkoeff = 1.00;
-                break;
-        }
-
-        switch (Objects.requireNonNull(spinnerOutputLiveData.getValue()))
-        {
-            case "Meters":
-            case "Grams":
-            case "Rubles":
-                secondkoeff = 1.0;
-                break;
-            case "Kilometers":
-            case "Kilograms":
-                secondkoeff = 1000.0;
-                break;
-            case "Miles":
-                secondkoeff = 1609.64;
-                break;
-            case "Pounds":
-                secondkoeff = 453.592;
-                break;
-            case "Dollars" :
-                secondkoeff = 2.62;
-                break;
-            case "Euro":
-                secondkoeff = 3.09;
-                break;
-            default:
-                secondkoeff = 1.00;
-                break;
-        }
-
-        if (Objects.requireNonNull(inputEditLiveData.getValue()).length() > 0)
-        {
-            outputEditLiveData.setValue(String.valueOf(String.format("%.2f", (firstkoeff / secondkoeff) * Double.parseDouble(Objects.requireNonNull(inputEditLiveData.getValue())))));
-        }
-
-        else {
-            Toast toast = Toast.makeText(getApplication(), "Empty set", Toast.LENGTH_SHORT);
-            toast.show();
-        }
-
-    }
-    
-    public void saveInBuffer(int field, ClipboardManager clipboardManager) {
-        switch (field) {
-            case 1:
-                ClipData clipData = ClipData.newPlainText("text", inputEditLiveData.getValue());
-                clipboardManager.setPrimaryClip(clipData);
-                break;
-            case 2:
-                clipData = ClipData.newPlainText("text", outputEditLiveData.getValue());
-                clipboardManager.setPrimaryClip(clipData);
-                break;
-        }
-        Toast toast = Toast.makeText(getApplication(), "Save", Toast.LENGTH_SHORT);
-        toast.show();
-
+        String temp = first_field_data.getValue();
+        first_field_data.setValue(second_field_data.getValue());
+        second_field_data.setValue(temp);
+        Item temporary;
+        temporary = first_field_spinner.getValue();
+        first_field_spinner.setValue(second_filed_spinner.getValue());
+        second_filed_spinner.setValue(temporary);
     }
 }

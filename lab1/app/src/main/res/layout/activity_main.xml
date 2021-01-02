@@ -4,42 +4,35 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 
-    <Button
-        android:id="@+id/weight_button"
-        android:layout_width="100dp"
-        android:layout_height="50dp"
-        android:layout_marginBottom="30dp"
-        android:text="@string/weight"
-        android:onClick="onClick"
-        app:layout_constraintBottom_toTopOf="@+id/currency_button"
+    <fragment
+        android:id="@+id/ConvertFragment"
+        android:name="com.example.lab1.ConvertFragment"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <fragment
+        android:id="@+id/KeyboardFragment"
+        android:name="com.example.lab1.KeyboardFragment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/versionName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <Button
-        android:id="@+id/distance_button"
-        android:layout_width="100dp"
-        android:layout_height="50dp"
-        android:layout_marginBottom="30dp"
-        android:text="@string/distance"
-        android:onClick="onClick"
-        app:layout_constraintBottom_toTopOf="@+id/weight_button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/currency_button"
-        android:layout_width="100dp"
-        android:layout_height="50dp"
-        android:layout_marginBottom="228dp"
-        android:text="@string/currency"
-        android:onClick="onClick"
+    <TextView
+        android:id="@+id/versionName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
