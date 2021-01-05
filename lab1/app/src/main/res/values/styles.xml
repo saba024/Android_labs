@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="KeyButton">
+        <item name="android:width">120dp</item>
+        <item name="android:height">70dp</item>
+    </style>
+    <style name="KeyboardButtonLand">
+        <item name="android:width">70dp</item>
+        <item name="android:height">70dp</item>
+    </style>
+</resources>
