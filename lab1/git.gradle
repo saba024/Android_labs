@@ -1,8 +1,7 @@
 def getArray() {
     def differenceOutput = new ByteArrayOutputStream()
     exec {
-        commandLine  'git', 'describe',
-                standardOutput = differenceOutput
+        commandLine  'git', 'describe', standardOutput = differenceOutput
     }
     def ReceivedString = differenceOutput.toString()
     def currPosition = ReceivedString.indexOf('.')
