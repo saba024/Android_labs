@@ -1,0 +1,21 @@
+com/example/lab1/Translator.java
+ com.example.lab1.Translator
+com/example/lab1/MainViewModel.java
+ com.example.lab1.MainViewModel
+com/example/lab1/CopyOrder.java
+ com.example.lab1.CopyOrder
+com/example/lab1/MainActivity.java
+ com.example.lab1.MainActivity
+com/example/lab1/KeyboardFragment.java
+ com.example.lab1.KeyboardFragment
+ com.example.lab1.KeyboardFragment$1
+com/example/lab1/ConvertFragment.java
+ com.example.lab1.ConvertFragment
+ com.example.lab1.ConvertFragment$1
+ com.example.lab1.ConvertFragment$2
+com/example/lab1/ItemCategories.java
+ com.example.lab1.ItemCategories
+com/example/lab1/Item.java
+ com.example.lab1.Item
+com/example/lab1/BuildConfig.java
+ com.example.lab1.BuildConfig
