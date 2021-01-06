@@ -82,6 +82,12 @@ public class MainViewModel extends AndroidViewModel {
         return second_field_data.getValue();
     }
 
+    public String convert(Item data){
+        String str = Translator.convert(data, getFirst_field_spinner().getValue(), getSecond_filed_spinner().getValue());
+        setSecond_field_data(str);
+        return second_field_data.getValue();
+    }
+
 
     public void PasteToBuffer(CopyOrder type, ClipboardManager clipManager){
         ClipData clipboard;
