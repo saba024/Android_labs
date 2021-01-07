@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ProfileActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/text_username"
+                android:layout_width="242dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="TextView"
+                android:textAllCaps="true"
+                android:textColor="@android:color/black"
+                android:textSize="30sp" />
+
+            <Button
+                android:id="@+id/btn_change_username"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Изменить" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/image_avatar"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            tools:srcCompat="@tools:sample/avatars" />
+
+        <Button
+            android:id="@+id/btn_change_avatar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Изменить аватар" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

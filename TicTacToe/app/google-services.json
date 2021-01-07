@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "518165370781",
+    "project_id": "tictactoe-73cfe",
+    "storage_bucket": "tictactoe-73cfe.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:518165370781:android:54d8b9aa5625397c294174",
+        "android_client_info": {
+          "package_name": "com.example.battleship"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "518165370781-roefc3rla634kpdogfvbgut4cal9k873.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAxnHDn16V1nmY7Ccm_LI_VK6Y0c83yUw8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "518165370781-roefc3rla634kpdogfvbgut4cal9k873.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
