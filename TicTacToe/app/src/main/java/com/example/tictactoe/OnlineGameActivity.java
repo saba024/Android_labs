@@ -1,4 +1,4 @@
-package com.example.battleship;
+package com.example.tictactoe;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;

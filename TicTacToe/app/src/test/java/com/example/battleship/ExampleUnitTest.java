@@ -1,4 +1,4 @@
-package com.example.battleship;
+package com.example.tictactoe;
 
 import org.junit.Test;
 

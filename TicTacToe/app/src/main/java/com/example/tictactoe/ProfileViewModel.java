@@ -1,4 +1,4 @@
-package com.example.battleship;
+package com.example.tictactoe;
 
 import android.app.Application;
 import android.net.Uri;

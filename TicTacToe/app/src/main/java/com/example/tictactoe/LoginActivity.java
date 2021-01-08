@@ -1,4 +1,4 @@
-package com.example.battleship;
+package com.example.tictactoe;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
