@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TimerListActivity"
+    android:id="@+id/Constraint">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        app:title="TimerApp"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+
+        <Button
+            android:id="@+id/btnSettings"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/setting"
+            android:layout_gravity="right"/>
+
+        <Button
+            android:id="@+id/buttonAddTimer"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="right"
+            android:background="@color/yellow"
+            android:text="Add Timer" />
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <TextView
+        android:id="@+id/title"
+        android:text="@string/tittle"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        android:gravity="center_vertical|center_horizontal"
+        android:background="@color/yellow"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/list_timer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="@id/title" />
+
+
+</FrameLayout>
