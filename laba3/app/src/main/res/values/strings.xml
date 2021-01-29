@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">laba3</string>
+    <string name="place_ships">Place Ships</string>
+    <string name="rotate">Rotate</string>
+    <string name="random">Place Randomly</string>
+    <string name="continue">Continue game</string>
+</resources>
