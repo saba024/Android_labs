@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CreateActivity">
+
+
+    <EditText
+        android:id="@+id/editset"
+        android:layout_width="88dp"
+        android:layout_height="25dp"
+        android:ems="10"
+        android:inputType="number"
+        tools:layout_editor_absoluteX="161dp"
+        tools:layout_editor_absoluteY="234dp"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="88dp"
+        android:layout_height="25dp"
+        android:gravity="center_horizontal"
+        android:text="Sets"
+        android:textAlignment="center"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="42dp"
+        tools:layout_editor_absoluteY="234dp" />
+
+    <EditText
+        android:id="@+id/editwork"
+        android:layout_width="88dp"
+        android:layout_height="25dp"
+        android:ems="10"
+        android:inputType="number"
+        tools:layout_editor_absoluteX="160dp"
+        tools:layout_editor_absoluteY="169dp"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="88dp"
+        android:layout_height="25dp"
+        android:gravity="center_horizontal"
+        android:text="Work"
+        android:textAlignment="center"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="41dp"
+        tools:layout_editor_absoluteY="169dp" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="88dp"
+        android:layout_height="25dp"
+        android:gravity="center_horizontal"
+        android:text="Rest"
+        android:textAlignment="center"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="41dp"
+        tools:layout_editor_absoluteY="108dp" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="187dp"
+        android:layout_height="31dp"
+        android:text="Create Timer"
+        tools:layout_editor_absoluteX="112dp"
+        tools:layout_editor_absoluteY="33dp"
+        android:textAlignment="center"
+        android:gravity="center_horizontal"
+        tools:ignore="MissingConstraints" />
+
+    <EditText
+        android:id="@+id/editrest"
+        android:layout_width="88dp"
+        android:layout_height="25dp"
+        android:ems="10"
+        android:inputType="number"
+        tools:layout_editor_absoluteX="160dp"
+        tools:layout_editor_absoluteY="108dp"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Start"
+        tools:layout_editor_absoluteX="33dp"
+        tools:layout_editor_absoluteY="351dp"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/save"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Save"
+        tools:layout_editor_absoluteX="163dp"
+        tools:layout_editor_absoluteY="349dp"
+        tools:ignore="MissingConstraints" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
