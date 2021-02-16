@@ -25,6 +25,9 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
+import com.timgroup.jgravatar.Gravatar;
+import com.timgroup.jgravatar.GravatarDefaultImage;
+import com.timgroup.jgravatar.GravatarRating;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -60,13 +63,21 @@ public class ProfileActivity extends AppCompatActivity {
         final String fullName = user.getDisplayName();
         String email = user.getEmail();
 
-        StorageReference profileRef = storageReference.child("users/"+fAuth.getCurrentUser().getUid()+"/profile.jpg");
+        Gravatar gravatar = new Gravatar();
+        gravatar.setSize(50);
+        gravatar.setRating(GravatarRating.GENERAL_AUDIENCES);
+        gravatar.setDefaultImage(GravatarDefaultImage.IDENTICON);
+        String url = gravatar.getUrl(email);
+        
+        Picasso.get().load(url).into(profileImageView);
+
+        /*StorageReference profileRef = storageReference.child("users/"+fAuth.getCurrentUser().getUid()+"/profile.jpg");
         profileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             @Override
             public void onSuccess(Uri uri) {
                 Picasso.get().load(uri).into(profileImageView);
             }
-        });
+        });*/
 
         profileImageView.setOnClickListener(new View.OnClickListener() {
             @Override
