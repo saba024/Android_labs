@@ -68,6 +68,7 @@ public class ProfileActivity extends AppCompatActivity {
         gravatar.setRating(GravatarRating.GENERAL_AUDIENCES);
         gravatar.setDefaultImage(GravatarDefaultImage.IDENTICON);
         String url = gravatar.getUrl(email);
+        url = new StringBuffer(url).insert(4, "s").toString();
         
         Picasso.get().load(url).into(profileImageView);
 
