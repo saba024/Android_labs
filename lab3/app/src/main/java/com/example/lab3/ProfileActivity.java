@@ -35,9 +35,12 @@ import java.util.Map;
 public class ProfileActivity extends AppCompatActivity {
 
     public static final String TAG = "TAG";
+    String url;
     EditText profileFullName,profileEmail;
     ImageView profileImageView;
     Button saveBtn;
+    Button setGravatarImage;
+    Button setImage;
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
     FirebaseUser user;
@@ -59,6 +62,8 @@ public class ProfileActivity extends AppCompatActivity {
         profileEmail = findViewById(R.id.email);
         profileImageView = findViewById(R.id.profileImage);
         saveBtn = findViewById(R.id.savebtn);
+        setGravatarImage = findViewById(R.id.changeProfile);
+        setImage = findViewById(R.id.setImage);
 
         final String fullName = user.getDisplayName();
         String email = user.getEmail();
@@ -67,18 +72,30 @@ public class ProfileActivity extends AppCompatActivity {
         gravatar.setSize(50);
         gravatar.setRating(GravatarRating.GENERAL_AUDIENCES);
         gravatar.setDefaultImage(GravatarDefaultImage.IDENTICON);
-        String url = gravatar.getUrl(email);
+        url = gravatar.getUrl(email);
         url = new StringBuffer(url).insert(4, "s").toString();
-        
-        Picasso.get().load(url).into(profileImageView);
 
-        /*StorageReference profileRef = storageReference.child("users/"+fAuth.getCurrentUser().getUid()+"/profile.jpg");
-        profileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+
+
+        setGravatarImage.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onSuccess(Uri uri) {
-                Picasso.get().load(uri).into(profileImageView);
+            public void onClick(View v) {
+                Picasso.get().load(url).into(profileImageView);
             }
-        });*/
+        });
+
+        setImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                StorageReference profileRef = storageReference.child("users/"+fAuth.getCurrentUser().getUid()+"/profile.jpg");
+                profileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                    @Override
+                    public void onSuccess(Uri uri) {
+                        Picasso.get().load(uri).into(profileImageView);
+                    }
+                });
+            }
+        });
 
         profileImageView.setOnClickListener(new View.OnClickListener() {
             @Override
