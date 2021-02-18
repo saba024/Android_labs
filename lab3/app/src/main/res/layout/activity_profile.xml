@@ -44,6 +44,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/fullname" />
 
+<<<<<<< HEAD
+=======
+    <Button
+        android:id="@+id/changeProfile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="60dp"
+        android:text="Set Gravatar Image"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.075"
+        app:layout_constraintStart_toStartOf="parent" />
+>>>>>>> db3312986fbda97d3e075763e67ece0dc8910cbf
 
     <Button
         android:id="@+id/changeProfile"

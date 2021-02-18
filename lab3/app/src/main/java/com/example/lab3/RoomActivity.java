@@ -42,6 +42,8 @@ public class RoomActivity extends AppCompatActivity {
     TextView tvUserID, tvSendRequest, tvAcceptRequest;
     String LoginUserID, UserName, LoginUID;
 
+    User player;
+
     private FirebaseAuth fauth;
     private FirebaseAuth.AuthStateListener fAuthListener;
 
@@ -165,6 +167,11 @@ public class RoomActivity extends AppCompatActivity {
 
     void StartGame(String PlayerGameID, String OtherPlayer, String requestType){
         myRef.child("playing").child(PlayerGameID).removeValue();
+        player.setLoginUID(LoginUID);
+        player.setOtherPlayer(OtherPlayer);
+        player.setPlayerSession(PlayerGameID);
+        player.setRequestType(requestType);
+        player.setUserName(UserName);
         Intent intent = new Intent(getApplicationContext(), PlaceShipsActivity.class);
         intent.putExtra("player_session", PlayerGameID);
         intent.putExtra("user_name", UserName);
