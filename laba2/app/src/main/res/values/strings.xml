@@ -1,0 +1,39 @@
+<resources>
+    <string name="app_name" translatable="false">Timer</string>
+    <string name="kcal" translatable="false">Kcal</string>
+    <string name="nullinfo" translatable="false">--</string>
+    <!--Start translating here-->
+    <string name="start">Start</string>
+    <string name="work">Work</string>
+    <string name="rest">Rest</string>
+    <string name="sets">Sets</string>
+    <string name="settings">Settings</string>
+    <string name="batterysaving">Battery saving</string>
+    <string name="lang">Language</string>
+    <string name="appinfo">App info</string>
+    <string name="appcredit">App by @micrusa</string>
+    <string name="modes">Modes</string>
+    <string name="finishset">Finish set</string>
+    <string name="time">Time</string>
+    <string name="currentset">Curr. set</string>
+    <string name="hrstart">Start getting HR values on app start</string>
+    <string name="hrstartsum">This will avoid having some secs without HR values due to late starting</string>
+    <string name="reps">Reps</string>
+    <string name="repscountermode">Reps counter mode</string>
+    <string name="deletetimer">Do you want to delete the timer?</string>
+    <string name="workouts">Workouts</string>
+    <string name="workout_name">Workout</string>
+    <string name="duration">Duration</string>
+    <string name="worktime">Work time</string>
+    <string name="resttime">Rest time</string>
+    <string name="saved">Saved Timers</string>
+    <string name="create_new">Create New</string>
+    <string name="enabled">Enabled</string>
+    <string name="disabled">Disabled</string>
+    <string name="save">Save</string>
+    <string name="cancel">Cancel</string>
+    <string name="title_activity_settings">SettingsActivity</string>
+    <string name="fontsize">Fontsize</string>
+    <string name="custom">Timer1</string>
+
+</resources>
