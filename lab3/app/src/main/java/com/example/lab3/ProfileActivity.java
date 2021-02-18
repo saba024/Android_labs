@@ -50,13 +50,9 @@ public class ProfileActivity extends AppCompatActivity {
     FirebaseFirestore fStore;
     FirebaseUser user;
     StorageReference storageReference;
-<<<<<<< HEAD
     String imageType = "usual_avatar";
     FirebaseDatabase database = FirebaseDatabase.getInstance("https://lab3-dfb82-default-rtdb.firebaseio.com//");
     DatabaseReference myRef = database.getReference();
-=======
-    ImageView imgUser;
->>>>>>> db3312986fbda97d3e075763e67ece0dc8910cbf
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,11 +69,6 @@ public class ProfileActivity extends AppCompatActivity {
         profileImageView = findViewById(R.id.profileImage);
         saveBtn = findViewById(R.id.savebtn);
         setGravatarImage = findViewById(R.id.changeProfile);
-<<<<<<< HEAD
-=======
-        setImage = findViewById(R.id.setImage);
-        imgUser = findViewById(R.id.profileImage);
->>>>>>> db3312986fbda97d3e075763e67ece0dc8910cbf
 
         final String fullName = user.getDisplayName();
         String email = user.getEmail();
@@ -88,7 +79,7 @@ public class ProfileActivity extends AppCompatActivity {
         gravatar.setDefaultImage(GravatarDefaultImage.IDENTICON);
         url = gravatar.getUrl(email);
         url = new StringBuffer(url).insert(4, "s").toString();
-        User player = new User();
+
 
         DatabaseReference reference = myRef.child("users").child(user.toString()).child("imageType"); // Когда пользователь заходит на страницу там загружается фото которое он выбирал до этого, даже если пользователь выходил с аккаунта.
         reference.addValueEventListener(new ValueEventListener() {
@@ -100,15 +91,8 @@ public class ProfileActivity extends AppCompatActivity {
             }
 
             @Override
-<<<<<<< HEAD
             public void onCancelled(@NonNull DatabaseError error) {
 
-=======
-            public void onClick(View v) {
-                Picasso.get().load(url).into(profileImageView);
-                player.setUrl(url);
-                player.setGravatar(true);
->>>>>>> db3312986fbda97d3e075763e67ece0dc8910cbf
             }
         });
 
@@ -125,7 +109,6 @@ public class ProfileActivity extends AppCompatActivity {
                     @Override
                     public void onSuccess(Uri uri) {
                         Picasso.get().load(uri).into(profileImageView);
-                        player.setGravatar(false);
                     }
                 });
             }
@@ -163,7 +146,6 @@ public class ProfileActivity extends AppCompatActivity {
                         Map<String,Object> edited = new HashMap<>();
                         edited.put("email",email);
                         edited.put("fName",profileFullName.getText().toString());
-                        edited.put("image", imgUser);
                         docRef.update(edited).addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void aVoid) {

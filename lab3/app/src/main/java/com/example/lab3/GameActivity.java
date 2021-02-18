@@ -39,7 +39,6 @@ public class GameActivity extends AppCompatActivity {
     String otherPlayer = "";
     String loginUID = "";
     String requestType = "";
-    User player;
 
     FirebaseDatabase database = FirebaseDatabase.getInstance("https://lab3-dfb82-default-rtdb.firebaseio.com//");
     DatabaseReference myRef = database.getReference();
@@ -50,11 +49,11 @@ public class GameActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
         setBoard();
-        userName = player.getUserName();
-        loginUID = player.getLoginUID();
-        otherPlayer = player.getOtherPlayer();
-        requestType = player.getRequestType();
-        playerSession = player.getPlayerSession();
+        userName = getIntent().getExtras().get("user_name").toString();
+        loginUID = getIntent().getExtras().get("login_uid").toString();
+        otherPlayer = getIntent().getExtras().get("other_player").toString();
+        requestType = getIntent().getExtras().get("request_type").toString();
+        playerSession = getIntent().getExtras().get("player_session").toString();
         vf = (ViewFlipper) findViewById( R.id.viewFlipper );
 
         if(requestType.equals("From")){

@@ -5,20 +5,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
-import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,11 +30,7 @@ public class PlaceShipsActivity extends AppCompatActivity {
     String otherPlayer = "";
     String loginUID = "";
     String requestType = "";
-    User player;
-    ImageView profile;
-    FirebaseAuth fAuth;
 
-    StorageReference storageReference;
     FirebaseDatabase database = FirebaseDatabase.getInstance("https://lab3-dfb82-default-rtdb.firebaseio.com/");
     DatabaseReference myRef = database.getReference("playing");
 
@@ -51,32 +41,11 @@ public class PlaceShipsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_place_ships);
 
-        profile = findViewById(R.id.imageProfile);
-        userName = player.getUserName();
-        loginUID = player.getLoginUID();
-        otherPlayer = player.getOtherPlayer();
-        requestType = player.getRequestType();
-        playerSession = player.getPlayerSession();
-        fAuth = FirebaseAuth.getInstance();
-        storageReference = FirebaseStorage.getInstance().getReference();
-
-
-        if(player.isGravatar())
-        {
-            String url = player.getUrl();
-            Picasso.get().load(url).into(profile);
-        }
-        
-        else
-            {
-                StorageReference profileRef = storageReference.child("users/"+fAuth.getCurrentUser().getUid()+"/profile.jpg");
-                profileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                    @Override
-                    public void onSuccess(Uri uri) {
-                        Picasso.get().load(uri).into(profile);
-                    }
-                });
-            }
+        userName = getIntent().getExtras().get("user_name").toString();
+        loginUID = getIntent().getExtras().get("login_uid").toString();
+        otherPlayer = getIntent().getExtras().get("other_player").toString();
+        requestType = getIntent().getExtras().get("request_type").toString();
+        playerSession = getIntent().getExtras().get("player_session").toString();
 
         Button btn = findViewById(R.id.button);
         btn.setOnClickListener(v -> {
@@ -101,6 +70,11 @@ public class PlaceShipsActivity extends AppCompatActivity {
         Button btnstartgame = findViewById(R.id.button5);
         btnstartgame.setOnClickListener(v -> {
             Intent intent = new Intent(this, GameActivity.class);
+            intent.putExtra("player_session", playerSession);
+            intent.putExtra("user_name", userName);
+            intent.putExtra("other_player", otherPlayer);
+            intent.putExtra("login_uid", playerSession);
+            intent.putExtra("request_type", requestType);
             startActivity(intent);
         });
     }
